@@ -72,6 +72,12 @@ Object.extend(Function.prototype, {
 		  .replace(/\/\/.*?[\r\n]|\/\*(?:.|[\r\n])*?\*\//g, '')
 		  .replace(/\s+/g, '').split(',');
 		return names.length == 1 && !names[0] ? [] : names;
+	 },
+	 bind: function(object) {
+	 	var func = this;
+	 	return function() {
+	 		return func.apply(object, arguments);
+	 	}
 	 }
 });
 
